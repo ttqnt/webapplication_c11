@@ -4,7 +4,6 @@ from wtforms import StringField, FileField, SubmitField, RadioField, TextAreaFie
 from wtforms.validators import DataRequired
 from Blastlogica import *
 import redis
-#from Bio import Entrez, Medline
 
 app = Flask(__name__)
 cache = redis.Redis(host='redis', port=6379)
@@ -22,7 +21,7 @@ class InputForm(FlaskForm):
 
 #REST API methode; accepteert json/dictionary van 1 of meerdere sequenties met sequentietype ("nuc", "prot")
 #en evt een ziekte als value, retourneert een jsonfile van de annotatie.
-#redirects naar de webpagina /Blasttool wanneer er geen jsonfile aangeleverd wordt. 
+#redirects naar de webpagina /Blasttool wanneer er geen jsonfile aangeleverd wordt.
 @app.route('/', methods = ['GET', 'POST'])
 def main():
     if request.method == 'GET':

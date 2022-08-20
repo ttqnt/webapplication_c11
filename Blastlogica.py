@@ -1,5 +1,6 @@
 from app import *
 from Bio.Blast import NCBIWWW, NCBIXML
+#from Bio import Entrez, Medline
 
 # class voor alignmentpresentatiemethoden, om ze overzichtelijker op de webpagina te kunnen presenteren.
 class AlignmentPresentation:
