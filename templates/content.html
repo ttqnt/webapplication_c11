@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+  {% block content %}
+
+  <div class="">
+    {% for record in blast_records %}
+    <h5>Resultaten voor sequentie {{  record }}: </h5>
+    {% for alignment in blast_records[record] %}
+
+    {{blast_records[record][alignment]["hit_def"]}} | {{blast_records[record][alignment]["accessionnr"]}}   <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapsePM" role="button" aria-expanded="false" aria-controls="collapse"> Pubmed Hits </a>
+    <div class="collapse" id=collapsePM>
+      <div class="card card-body">
+        {{blast_records[record][alignment]["accessionnr"]}}
+      </div>
+    </div>
+      <pre style="font-size:1vw">length:{{blast_records[record][alignment]["length"]}}   e-value: {{blast_records[record][alignment]["evalue"]}}   score:{{blast_records[record][alignment]["score"]}}   identities:{{blast_records[record][alignment]["identities"]}}  positives:{{blast_records[record][alignment]["positives"]}}  gaps:{{blast_records[record][alignment]["gaps"]}}<br>
+
+{{blast_records[record][alignment]["query"][:75]}}
+{{blast_records[record][alignment]["match"][:75]}}
+{{blast_records[record][alignment]["sbjct"][:75]}}
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseAlign" role="button" aria-expanded="false" aria-controls="collapseExample"> Volledige Alignment </a>
+        <div class="collapse" id="collapseAlign">
+          <div class="card card-body">
+{{blast_records[record][alignment]["full_seq"]}} </pre>
+    {% endfor %}
+  {% endfor %}
+  </div><br>
+
+{% endblock %}
