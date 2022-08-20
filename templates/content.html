@@ -1,9 +1,12 @@
 {% extends "base.html"%}
   {% block content %}
 
-  <div class="">
+  <div class="row">
     {% for record in blast_records %}
-    <h5>Resultaten voor sequentie {{  record }}: </h5>
+    <div class="col-2">
+      Resultaten Sequentie {{record}}:
+    </div>
+    <div class="col-7">
     {% for alignment in blast_records[record] %}
 
     {{blast_records[record][alignment]["hit_def"]}} | {{blast_records[record][alignment]["accessionnr"]}}   <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapsePM" role="button" aria-expanded="false" aria-controls="collapse"> Pubmed Hits </a>
@@ -23,6 +26,7 @@
 {{blast_records[record][alignment]["full_seq"]}} </pre>
     {% endfor %}
   {% endfor %}
+    </div>
   </div><br>
 
 {% endblock %}
